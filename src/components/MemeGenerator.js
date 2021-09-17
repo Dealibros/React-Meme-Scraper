@@ -74,7 +74,15 @@ const MemeGenerator = function () {
     // console.log(selectedText);
     // selectedMeme.name = setAllText;
 
-    urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText}/${allText.bottomText}`;
+    urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText
+      .replace(/ /g, '_')
+      .replace(/\?/g, '~q')
+      .replace(/#/g, '~h')
+      .replace(/\//g, '~s')}/${allText.bottomText
+      .replace(/ /g, '_')
+      .replace(/\?/g, '~q')
+      .replace(/#/g, '~h')
+      .replace(/\//g, '~s')}`;
 
     // const newPrinting = selectedMeme;
 
