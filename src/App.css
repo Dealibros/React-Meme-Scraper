@@ -1,0 +1,128 @@
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  background: #846dad !important;
+  background: -webkit-linear-gradient(to right, #b6a0c7, #bdb6ce) !important;
+  background: linear-gradient(to right, #2c1b3a, #c4aaf1) !important;
+}
+
+header > h1 {
+  font-family: monospace;
+  font-size: 2.8rem;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+header > img {
+  height: 60%;
+  margin-left: 10%;
+  max-width: 80%;
+}
+
+header > p {
+  font-family: VT323, monospace;
+  color: whitesmoke;
+  font-size: 50px;
+  margin-left: 60px;
+}
+
+.meme {
+  position: relative;
+  width: 90%;
+  margin: auto;
+}
+
+.meme > img {
+  width: 60%;
+  border-radius: 2rem;
+  border: 2px solid rgb(161, 157, 157);
+}
+
+h2 {
+  font-size: 30rem;
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+.meme > .bottom {
+  bottom: 0;
+}
+
+.meme > .top {
+  top: 0;
+}
+
+.form {
+  max-width: 50%;
+  margin: 5px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+form > input {
+  font-size: 1.1rem;
+  font-family: cursive;
+  text-align: center;
+  border-radius: 0.5rem;
+  margin: 0.1rem;
+  max-width: 55%;
+  height: 40px;
+}
+
+button {
+  padding: 0.6rem;
+  margin: 1.1rem;
+  border-radius: 0.4rem;
+  border: none;
+  font-family: VT323, monospace;
+  font-size: 25px;
+  letter-spacing: 1.5px;
+  color: white;
+  background: #9c8db4;
+}
