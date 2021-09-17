@@ -1,6 +1,9 @@
 import '../App.css';
 import React, { useEffect, useState } from 'react';
 
+let urlExample;
+let idImg;
+
 //Initialize state to save the following Data:
 //Top Text ---  Bottom Text ---  Random Image
 const MemeGenerator = function () {
@@ -18,7 +21,7 @@ const MemeGenerator = function () {
   //save the results from response.data to allMemeImgs thats initialized as an empty array.
 
   //allMemesImgs has now an array of 160 objects
-  // ('----------------------------------------------------------');
+  //---------------------------------------------------------------------------------------------------------------------------
   //  Make an API call to https://memegen.link/ and save the data that comes back (an array -called response.data?-) to the new state property called allMemeImgs
 
   //This returns a promise that we convert into a javascript method with the .json method.
@@ -40,7 +43,7 @@ const MemeGenerator = function () {
   // setallMemeImgs(response.data.memes);
   // set allMemeImgs state
 
-  // // --------------------------------------------------------
+  //--------------------------------------------------------
 
   const handleChange = function (e) {
     const { name, value } = e.target;
@@ -61,57 +64,81 @@ const MemeGenerator = function () {
     console.log(randNumber);
     const selectedMeme = everyMemeImgs[randNumber];
 
-    const printImg = selectedMeme.blank;
+    // const printImg = selectedMeme.blank; Opcional without downloading
 
-    const idImg = selectedMeme.id;
+    idImg = selectedMeme.id;
     console.log(idImg);
 
     // const selectedText = selectedMeme.name;
     // console.log(selectedText);
     // selectedMeme.name = setAllText;
-    // const urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText}/${allText.bottomText}.png}`;
 
-    const newPrinting = selectedMeme;
+    urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText}/${allText.bottomText}`;
 
-    setaRandomImg(printImg);
+    // const newPrinting = selectedMeme;
+
+    setaRandomImg(urlExample);
+  };
+
+  const handleDownloadClick = () => {
+    fetch(urlExample)
+      .then((response) => response.blob())
+      .then((blob) => {
+        //Create blob link to download
+
+        // The Blob object represents a blob, which is a file-like object of immutable, raw data; can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data. Look more into this...
+
+        const blobLink = URL.createObjectURL(new Blob([blob]));
+
+        const link = document.createElement('a');
+
+        link.href = blobLink;
+
+        console.log(link.setAttribute('download', `meme${idImg}.png`));
+
+        // Append to html link element page
+        // document.body.appendChild(link);
+
+        link.click('download');
+      });
 
     // function printed = printImg(url);
     // console.log(printed);
   };
 
-  // randomImage = allMemeImgs(randomNumber).img(----------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------
   //Input fields. One top - one bottom
+  // randomImage = allMemeImgs(randomNumber).img
+
   return (
     <div className="meme-container">
-      {console.log('working 2!', everyMemeImgs)}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="topText"
-          placeholder="Add Top Text"
-          value={allText.topText}
-          onChange={handleChange}
-        />
+      <div>
+        <button onClick={handleSubmit} className="download">
+          Generate
+        </button>
+        <button onClick={handleDownloadClick}>Download</button>
+      </div>
 
-        <input
-          type="text"
-          name="bottomText"
-          placeholder="Add Bottom Text"
-          value={allText.bottomText}
-          onChange={handleChange}
-        />
+      <input
+        type="text"
+        name="topText"
+        placeholder="Add Top Text"
+        value={allText.topText}
+        onChange={handleChange}
+      />
 
-        <button>Generate</button>
-      </form>
+      <input
+        type="text"
+        name="bottomText"
+        placeholder="Add Bottom Text"
+        value={allText.bottomText}
+        onChange={handleChange}
+      />
       <div className="meme">
         <img src={aRandomImg} alt="" />
-        <h2 className="top">{allText.topText}</h2>
-        <h2 className="bottom">{allText.bottomText}</h2>
       </div>
     </div>
   );
 };
-
-// id":"buzz","name":"X, X Everywhere","lines":2,"styles":
 
 export default MemeGenerator;
