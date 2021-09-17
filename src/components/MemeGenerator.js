@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import '../App.css';
 import React, { useEffect, useState } from 'react';
 
 let urlExample;
 let idImg;
 
-//Initialize state to save the following Data:
-//Top Text ---  Bottom Text ---  Random Image
+// Initialize state to save the following Data:
+// Top Text ---  Bottom Text ---  Random Image//
 const MemeGenerator = function () {
   const [allText, setAllText] = useState({
     topText: '',
@@ -16,24 +17,24 @@ const MemeGenerator = function () {
 
   const [aRandomImg, setaRandomImg] = useState('');
 
-  //Initialize state to save the data that comes back
+  // Initialize state to save the data that comes back
   const [everyMemeImgs, setEveryMemeImgs] = useState([]);
-  //save the results from response.data to allMemeImgs thats initialized as an empty array.
+  // save the results from response.data to allMemeImgs thats initialized as an empty array.
 
-  //allMemesImgs has now an array of 160 objects
-  //---------------------------------------------------------------------------------------------------------------------------
+  // allMemesImgs has now an array of 160 objects
+  // ---------------------------------------------------------------------------------------------------------------------------
   //  Make an API call to https://memegen.link/ and save the data that comes back (an array -called response.data?-) to the new state property called allMemeImgs
 
-  //This returns a promise that we convert into a javascript method with the .json method.
+  // This returns a promise that we convert into a javascript method with the .json method.
 
   useEffect(() => {
     console.log('working 1?');
-    fetch('https://api.memegen.link/templates') //call to Url
-      .then((response) => response.json()) //turn promise into Js Object
+    fetch('https://api.memegen.link/templates') // call to Url
+      .then((response) => response.json()) // turn promise into Js Object
       .then((data) => setEveryMemeImgs(data));
   }, []);
 
-  //I receive an object need to convert it in an array and select what I need from it.
+  // I receive an object need to convert it in an array and select what I need from it.
   // .then((response) => {
 
   //   // const { memes } = response.data; //pull memes array from response.data
@@ -43,7 +44,7 @@ const MemeGenerator = function () {
   // setallMemeImgs(response.data.memes);
   // set allMemeImgs state
 
-  //--------------------------------------------------------
+  // --------------------------------------------------------
 
   const handleChange = function (e) {
     const { name, value } = e.target;
@@ -55,8 +56,8 @@ const MemeGenerator = function () {
 
   // handleSubmit =>
   // Makes randNum = Random number from 0 until 160(objects.length in the array)
-  //randMemeImg = the state of all MemeImgs[randNum]
-  //#setRandomImg# (randMemeImg)
+  // randMemeImg = the state of all MemeImgs[randNum]
+  // #setRandomImg# (randMemeImg)
 
   const handleSubmit = function (e) {
     e.preventDefault();
@@ -84,7 +85,7 @@ const MemeGenerator = function () {
     fetch(urlExample)
       .then((response) => response.blob())
       .then((blob) => {
-        //Create blob link to download
+        // Create blob link to download
 
         // The Blob object represents a blob, which is a file-like object of immutable, raw data; can be read as text or binary data, or converted into a ReadableStream so its methods can be used for processing the data. Look more into this...
 
@@ -107,7 +108,7 @@ const MemeGenerator = function () {
   };
 
   // ---------------------------------------------------------------------------------------------------------------------
-  //Input fields. One top - one bottom
+  // Input fields. One top - one bottom
   // randomImage = allMemeImgs(randomNumber).img
 
   return (
@@ -120,7 +121,6 @@ const MemeGenerator = function () {
       </div>
 
       <input
-        type="text"
         name="topText"
         placeholder="Add Top Text"
         value={allText.topText}
@@ -128,7 +128,6 @@ const MemeGenerator = function () {
       />
 
       <input
-        type="text"
         name="bottomText"
         placeholder="Add Bottom Text"
         value={allText.bottomText}
