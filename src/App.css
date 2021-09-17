@@ -66,8 +66,9 @@ header > p {
 }
 
 .meme > img {
-  margin-top: 1.6rem;
-  width: 60%;
+  margin-top: 2.4rem;
+  width: 40%;
+  height: 40%;
   border-radius: 2rem;
   border: 2px solid rgb(161, 157, 157);
 }
@@ -120,7 +121,7 @@ input {
 
 button {
   padding: 0.4rem 3.8rem 0.4rem 3.8rem;
-  margin: 1rem 1.9rem 0 1.9rem;
+  margin: 1.7rem 1.9rem 0 1.9rem;
   border-radius: 0.4rem;
   border: 1px solid rgb(196, 191, 191);
   font-family: VT323, monospace;
@@ -128,4 +129,14 @@ button {
   letter-spacing: 1.5px;
   color: white;
   background: #d6cdb1;
+}
+
+@media only screen and (max-width: 1000px) {
+  .meme > img {
+    margin-top: 1.6rem;
+    width: 70%;
+    height: 70%;
+    border-radius: 2rem;
+    border: 2px solid rgb(161, 157, 157);
+  }
 }

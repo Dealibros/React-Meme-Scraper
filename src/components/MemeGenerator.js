@@ -11,11 +11,11 @@ const MemeGenerator = function () {
   const [allText, setAllText] = useState({
     topText: '',
     bottomText: '',
-    aRandomImg:
-      'https://images.pexels.com/photos/92870/pexels-photo-92870.jpeg?cs=srgb&dl=pexels-leonie-fahjen-92870.jpg&fm=jpg',
   });
 
-  const [aRandomImg, setaRandomImg] = useState('');
+  const [aRandomImg, setaRandomImg] = useState(
+    'https://images.pexels.com/photos/92870/pexels-photo-92870.jpeg?cs=srgb&dl=pexels-leonie-fahjen-92870.jpg&fm=jpg',
+  );
 
   // Initialize state to save the data that comes back
   const [everyMemeImgs, setEveryMemeImgs] = useState([]);
