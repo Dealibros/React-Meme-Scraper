@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import '../App.css';
 import React, { useEffect, useState } from 'react';
 
@@ -7,6 +6,7 @@ let idImg;
 
 // Initialize state to save the following Data:
 // Top Text ---  Bottom Text ---  Random Image//
+
 const MemeGenerator = function () {
   const [allText, setAllText] = useState({
     topText: '',
@@ -19,11 +19,11 @@ const MemeGenerator = function () {
 
   // Initialize state to save the data that comes back
   const [everyMemeImgs, setEveryMemeImgs] = useState([]);
-  // save the results from response.data to allMemeImgs thats initialized as an empty array.
+  // save the results from response.data to everyMemeImgs thats initialized as an empty array.
 
-  // allMemesImgs has now an array of 160 objects
-  // ---------------------------------------------------------------------------------------------------------------------------
-  //  Make an API call to https://memegen.link/ and save the data that comes back (an array -called response.data?-) to the new state property called allMemeImgs
+  // everyMemesImgs has now an array of 160 objects
+  // ----------------------------------------------------------------------------------------------------------------
+  //  Make an API call to https://memegen.link/ and save the data that comes back (an array -called response.data?-) to the new state property called everyMemeImgs
 
   // This returns a promise that we convert into a javascript method with the .json method.
 
@@ -34,20 +34,13 @@ const MemeGenerator = function () {
       .then((data) => setEveryMemeImgs(data));
   }, []);
 
-  // I receive an object need to convert it in an array and select what I need from it.
+  // Received an object, need to convert it into an array and select what needed from it.
   // .then((response) => {
-
-  //   // const { memes } = response.data; //pull memes array from response.data
-  //   const { memes } = response.data;
-  //   setAllMemeImgs(memes);
-
-  // setallMemeImgs(response.data.memes);
-  // set allMemeImgs state
 
   // --------------------------------------------------------
 
   const handleChange = function (e) {
-    const { name, value } = e.target;
+
     setAllText({
       ...allText,
       [e.target.name]: e.target.value,
@@ -65,14 +58,11 @@ const MemeGenerator = function () {
     console.log(randNumber);
     const selectedMeme = everyMemeImgs[randNumber];
 
-    // const printImg = selectedMeme.blank; Opcional without downloading
+    // const printImg = selectedMeme.blank; Optional without downloading
 
     idImg = selectedMeme.id;
     console.log(idImg);
 
-    // const selectedText = selectedMeme.name;
-    // console.log(selectedText);
-    // selectedMeme.name = setAllText;
 
     urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText
       .replace(/ /g, '_')
@@ -84,7 +74,7 @@ const MemeGenerator = function () {
       .replace(/#/g, '~h')
       .replace(/\//g, '~s')}`;
 
-    // const newPrinting = selectedMeme;
+
 
     setaRandomImg(urlExample);
   };
@@ -115,9 +105,9 @@ const MemeGenerator = function () {
     // console.log(printed);
   };
 
-  // ---------------------------------------------------------------------------------------------------------------------
+  // ----------------------------------------------------------------------------------------------------------------
   // Input fields. One top - one bottom
-  // randomImage = allMemeImgs(randomNumber).img
+  // randomImage = everyMemeImgs(randomNumber).img
 
   return (
     <div className="meme-container">
