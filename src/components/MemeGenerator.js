@@ -40,7 +40,6 @@ const MemeGenerator = function () {
   // --------------------------------------------------------
 
   const handleChange = function (e) {
-
     setAllText({
       ...allText,
       [e.target.name]: e.target.value,
@@ -63,7 +62,6 @@ const MemeGenerator = function () {
     idImg = selectedMeme.id;
     console.log(idImg);
 
-
     urlExample = `https://api.memegen.link/images/${idImg}/${allText.topText
       .replace(/ /g, '_')
       .replace(/\?/g, '~q')
@@ -73,8 +71,6 @@ const MemeGenerator = function () {
       .replace(/\?/g, '~q')
       .replace(/#/g, '~h')
       .replace(/\//g, '~s')}`;
-
-
 
     setaRandomImg(urlExample);
   };
